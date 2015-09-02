@@ -5,6 +5,7 @@
     */
 
     require_once "src/brand.php";
+    require_once "src/store.php";
 
     $server = 'mysql:host=localhost;dbname=shoe_stores_test';
     $username = 'root';
@@ -15,6 +16,7 @@
         protected function tearDown()
         {
             Brand::deleteAll();
+            Store::deleteAll();
         }
 
         function testSetBrandName()
@@ -70,6 +72,28 @@
             $result = Brand::getAll();
 
             $this->assertEquals($new_brand, $result[0]);
+        }
+
+        function testGetStores()
+        {
+            $store_name = "Beacon's Closet";
+            $new_store = new Store($store_name);
+            $new_store->save();
+
+            $store_name2 = "Buffalo Exchange";
+            $new_store2 = new Store($store_name);
+            $new_store2->save();
+
+            $brand_name = "dr.martens";
+            $new_brand = new Brand($brand_name);
+            $new_brand->save();
+
+            $new_brand->addStore($new_store);
+            $new_brand->addStore($new_store2);
+
+            $result = $new_brand->getStores();
+
+            $this->assertEquals([$new_store, $new_store2], $result);
         }
 
         function testGetAll()

@@ -89,6 +89,23 @@
             $this->assertEquals($new_store, $result[0]);
         }
 
+        function testAddBrand()
+        {
+            $store_name = "Beacon's Closet";
+            $new_store = new Store($store_name);
+            $new_store->save();
+
+            $brand_name = "dr.martens";
+            $new_brand = new Brand($brand_name);
+            $new_brand->save();
+
+            $new_store->addBrand($new_brand);
+
+            $result = $new_store->getBrands();
+
+            $this->assertEquals($test_brand, result[0]);
+        }
+
         function testDeleteOne()
         {
             $store_name = "Beacon's Closet";

@@ -28,36 +28,49 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO brand (brand_name) VALUES ('{$this->getBrandName()}');");
+            $GLOBALS['DB']->exec("INSERT INTO brands (brand_name) VALUES ('{$this->getBrandName()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         function update()
         {
-            $GLOBALS['DB']->exec("UPDATE brand SET brand_name = '{$this->getBrandName()}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE brands SET brand_name = '{$this->getBrandName()}' WHERE id = {$this->getId()};");
         }
 
         function deleteOne()
         {
-            $GLOBALS['DB']->exec("DELETE FROM brand WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
         }
 
         function getStores()
         {
-            $query = $GLOBALS['DB']->query("SELECT store. * FROM brand
+            $returned_stores = $GLOBALS['DB']->query("SELECT stores. * FROM brands
                                     JOIN stores_brands ON (brand.id = stores_brands.brand_id)
-                                    JOIN store on (stores_brands.store_id = store.id)
+                                    JOIN stores on (stores_brands.store_id = store.id)
                                     WHERE brand.id = {$this->getId()};");
+            $stores = array();
+            foreach($returned_stores as $store)
+            {
+                $store_name = $store['store_name'];
+                $id = $store['id'];
+                array_push($stores, $new_store);
+            }
+            return $stores;
+        }
+
+        function addStore($store)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
         }
 
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM brand;");
+            $GLOBALS['DB']->exec("DELETE FROM brands;");
         }
 
         static function getAll()
         {
-            $brands_returned = $GLOBALS['DB']->query("SELECT * FROM brand;");
+            $brands_returned = $GLOBALS['DB']->query("SELECT * FROM brands;");
             $brands = array();
             foreach($brands_returned as $brand){
                 $brand_name = $brand['brand_name'];
