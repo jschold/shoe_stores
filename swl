@@ -1,0 +1,4 @@
+SELECT store. * FROM brand
+                        JOIN stores_brands ON (brand.id = stores_brands.brand_id)
+                        JOIN store on (stores_brands.store_id = store.id)
+                        WHERE store.id = 1;

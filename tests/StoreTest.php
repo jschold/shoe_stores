@@ -11,7 +11,7 @@
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
-    class CategoryTest extends PHPUnit_Framework_TestCase
+    class StoreTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
@@ -71,9 +71,72 @@
             $new_store = new Store($store_name);
 
             $new_store->save();
+
+            $result = Store::getAll();
+            $this->assertEquals($new_store, $result[0]);
+        }
+
+        function testUpdate()
+        {
+            $store_name = "Beacon's Closet";
+            $new_store = new Store($store_name);
+            $new_store->save();
+            $new_store->setStoreName("Buffalo Exchange");
+            $new_store->update();
+
             $result = Store::getAll();
 
             $this->assertEquals($new_store, $result[0]);
+        }
+
+        function testDeleteOne()
+        {
+            $store_name = "Beacon's Closet";
+            $new_store = new Store($store_name);
+            $new_store->save();
+
+            $store_name2 = "Buffalo Exchange";
+            $new_store2 = new Store($store_name);
+            $new_store2->save();
+
+            $new_store->deleteOne();
+
+            $result = Store::getAll();
+
+            $this->assertEquals($new_store2, $result[0]);
+        }
+
+        function testDeleteAll()
+        {
+
+            $store_name = "Beacon's Closet";
+            $new_store = new Store($store_name);
+            $new_store->save();
+
+            $store_name2 = "Buffalo Exchange";
+            $new_store2 = new Store($store_name);
+            $new_store2->save();
+
+            Store::deleteAll();
+            $result = Store::getAll();
+
+            $this->assertEquals([], $result);
+
+        }
+
+        function testFind()
+        {
+            $store_name = "Beacon's Closet";
+            $new_store = new Store($store_name);
+            $new_store->save();
+
+            $store_name2 = "Buffalo Exchange";
+            $new_store2 = new Store($store_name);
+            $new_store2->save();
+
+            $result = Store::find($new_store->getId());
+
+            $this->assertEquals($new_store, $result);
         }
 
     }

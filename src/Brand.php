@@ -36,10 +36,18 @@
         {
             $GLOBALS['DB']->exec("UPDATE brand SET brand_name = '{$this->getBrandName()}' WHERE id = {$this->getId()};");
         }
-        
+
         function deleteOne()
         {
             $GLOBALS['DB']->exec("DELETE FROM brand WHERE id = {$this->getId()};");
+        }
+
+        function getStores()
+        {
+            $query = $GLOBALS['DB']->query("SELECT store. * FROM brand
+                                    JOIN stores_brands ON (brand.id = stores_brands.brand_id)
+                                    JOIN store on (stores_brands.store_id = store.id)
+                                    WHERE brand.id = {$this->getId()};");
         }
 
         static function deleteAll()
