@@ -35,3 +35,11 @@ PhpMyAdmin
 Copyright (c) 2015 **_Jenna Navratil_**
 
 This software is licensed under the MIT license.
+
+## MySql Commands
+SELECT DATABASE();
+CREATE DATABASE shoe_stores;
+USE shoe_stores;
+CREATE TABLE store(store_name VARCHAR(255), id serial PRIMARY KEY);
+CREATE TABLE brand(brand_name VARCHAR(255), id serial PRIMARY KEY);
+CREATE TABLE stores_brands(store_id int, brand_id int, id serial PRIMARY KEY);
