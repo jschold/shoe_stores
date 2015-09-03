@@ -76,7 +76,7 @@
 
         function testGetStores()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
             $new_store->save();
 

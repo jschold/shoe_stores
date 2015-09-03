@@ -21,7 +21,7 @@
 
         function testSetStoreName()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
             $new_store->setStoreName("Buffalo Exchange");
             $result = $new_store->getStoreName();
@@ -30,17 +30,17 @@
 
         function testGetStoreName()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
 
             $result = $new_store->getStoreName();
 
-            $this->assertEquals("Beacon's Closet", $result);
+            $this->assertEquals("Beacons Closet", $result);
         }
 
         function testGetId()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $id = 1;
             $new_store = new Store($store_name, $id);
 
@@ -51,7 +51,7 @@
 
         function testGetAll()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
             $new_store->save();
 
@@ -67,10 +67,11 @@
 
         function testSave()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
 
             $new_store->save();
+            var_dump($new_store);
 
             $result = Store::getAll();
             $this->assertEquals($new_store, $result[0]);
@@ -78,7 +79,7 @@
 
         function testUpdate()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
             $new_store->save();
             $new_store->setStoreName("Buffalo Exchange");
@@ -91,7 +92,7 @@
 
         function testAddBrand()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
             $new_store->save();
 
@@ -103,12 +104,12 @@
 
             $result = $new_store->getBrands();
 
-            $this->assertEquals($test_brand, result[0]);
+            $this->assertEquals($new_brand, $result[0]);
         }
 
         function testDeleteOne()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
             $new_store->save();
 
@@ -126,7 +127,7 @@
         function testDeleteAll()
         {
 
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
             $new_store->save();
 
@@ -143,7 +144,7 @@
 
         function testFind()
         {
-            $store_name = "Beacon's Closet";
+            $store_name = "Beacons Closet";
             $new_store = new Store($store_name);
             $new_store->save();
 
