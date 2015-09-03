@@ -4,8 +4,8 @@
     *@backupStaticAttributes disabled
     */
 
-    require_once "src/brand.php";
-    require_once "src/store.php";
+    require_once "src/Brand.php";
+    require_once "src/Store.php";
 
     $server = 'mysql:host=localhost;dbname=shoe_stores_test';
     $username = 'root';

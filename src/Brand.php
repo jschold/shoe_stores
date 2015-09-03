@@ -44,10 +44,10 @@
 
         function getStores()
         {
-            $returned_stores = $GLOBALS['DB']->query("SELECT stores. * FROM brands
-                                    JOIN stores_brands ON (brand.id = stores_brands.brand_id)
-                                    JOIN stores on (stores_brands.store_id = store.id)
-                                    WHERE brand.id = {$this->getId()};");
+            $returned_stores = $GLOBALS['DB']->query("SELECT stores.* FROM brands
+                                    JOIN brands_stores ON (brands.id = brands_stores.brand_id)
+                                    JOIN stores on (brands_stores.store_id = stores.id)
+                                    WHERE brands.id = {$this->getId()};");
             $stores = array();
             foreach($returned_stores as $store)
             {
@@ -60,7 +60,7 @@
 
         function addStore($store)
         {
-            $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
+            $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->getId()}, {$store->getId()});");
         }
 
         static function deleteAll()
