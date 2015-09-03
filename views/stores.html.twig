@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Shoe Experts</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class='container'>
+
+            <p>Enter a store's name:</p>
+
+            <form action='/stores' method='post'>
+                <div class ='form-group'>
+                    <label for='name'></label>
+                    <input id='name' class='form-control' placeholder='Store Name' name='name' type='text'>
+                    <br>
+                    <button type='submit' class='btn btn-danger'>Add Store</button>
+                </div>
+            </form>
+
+            {% if stores is not empty %}
+                <h2><p>Click on a store's name to see their list of clients:</p><h2>
+                <h3><ul>
+                    {% for store in stores %}
+                    <form action='/stores/{{ store.getId }}' method='post'>
+                    <input name='_method' type='hidden' value='delete'>
+                    <li><h4><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a>
+                        <a class="btn-success btn-lg" href="/stores/{{ store.getId }}/edit" role="button">Edit or Delete</a>
+                    {% endfor %}
+                </ul></h3>
+                <br>
+
+            {% else %}
+               <p>There are no stores entered yet!</p>
+            {% endif %}
+           <br>
+       </div>
+
+    </body>
+</html>
