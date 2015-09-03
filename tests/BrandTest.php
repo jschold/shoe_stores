@@ -90,8 +90,10 @@
 
             $new_brand->addStore($new_store);
             $new_brand->addStore($new_store2);
+            var_dump($new_brand);
 
             $result = $new_brand->getStores();
+            var_dump($result);
 
             $this->assertEquals([$new_store, $new_store2], $result);
         }

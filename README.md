@@ -1,6 +1,6 @@
 # _Shoe Stores_
 
-##### _An app where users can add and view stores and shoes sold in the stores. _
+##### _An app where users can add and view stores and brands sold in the stores. _
 
 #### By _**Jenna Navratil**_
 
@@ -26,8 +26,6 @@ Silex
 Twig
 MySql
 Bootstrap
-Symfony
-PhpMyAdmin
 
 ### Legal
 
