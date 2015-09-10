@@ -11,25 +11,25 @@
     </nav>
           <div class='container'>
           <div class="row">
-                {% if brands is not empty %}
-                    <p>Shoe brands carried by {{ store.GetStoreName }}:</p>
+                {% if stores is not empty %}
+                    <p>Shoe stores carried by {{ store.GetStoreName }}:</p>
                     <ul>
-                        {% for brand in brands %}
-                            <li>{{ brand.getBrandName }}</li>
+                        {% for store in stores %}
+                            <li>{{ store.getStoreName }}</li>
                         {% endfor %}
                     </ul>
                 {% endif %}
 
-          <h3>Add a brand to {{ store.GetStoreName }}:</h3>
+          <h3>Add a store to {{ store.GetStoreName }}:</h3>
 
-           <p>Enter a shoe brand to {{ store.getStoreName }}:</p>
-            <form action='/add_brands' method='post'>
+           <p>Enter a shoe store to {{ store.getStoreName }}:</p>
+            <form action='/add_stores' method='post'>
                 <input id='store_id' class='form-control' name="store_id" type="hidden" value="{{ store.getId()}}">
                 <div class ='form-group'>
-                    <label for='brand_name'></label>
-                    <input id='brand_name' class='form-control' placeholder='Brand Name' name='brand_name' type='text'>
+                    <label for='store_name'></label>
+                    <input id='store_name' class='form-control' placeholder='Store Name' name='store_name' type='text'>
                     <br>
-                    <button type='submit' class='btn btn-danger'>Add Brand</button>
+                    <button type='submit' class='btn btn-danger'>Add Store</button>
                 </div>
             </form>
                 <a class="btn-success btn-lg" href="/stores/{{ store.getId }}/edit" role="button">Edit or Delete Store</a>
