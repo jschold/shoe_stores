@@ -2,38 +2,45 @@
     <head>
         <title>Shoe Experts</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
-    <body>
+        <body>
+          <nav class="navbar navbar-inverse">
+            <h1>Shoe Experts</h1>
+            <h2>A place to search for shoes and the stores that carry them.</h3>
+          </nav>
+        <body>
         <div class='container'>
 
-            <p>Enter a store's name:</p>
+            <h3>Enter a store's name:</h3>
 
             <form action='/stores' method='post'>
                 <div class ='form-group'>
-                    <label for='name'></label>
-                    <input id='name' class='form-control' placeholder='Store Name' name='name' type='text'>
+                    <label for='store_name'></label>
+                    <input id='store_name' class='form-control' placeholder='Store Name' name='store_name' type='text'>
                     <br>
-                    <button type='submit' class='btn btn-danger'>Add Store</button>
+                    <button type='submit' class='btn btn-success'>Add Store</button>
                 </div>
             </form>
 
             {% if stores is not empty %}
-                <h2><p>Click on a store's name to see their list of clients:</p><h2>
+                <h2><p>Click on a store's name to see the brands they carry:</p></h2>
                 <h3><ul>
                     {% for store in stores %}
-                    <form action='/stores/{{ store.getId }}' method='post'>
-                    <input name='_method' type='hidden' value='delete'>
-                    <li><h4><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a>
-                        <a class="btn-success btn-lg" href="/stores/{{ store.getId }}/edit" role="button">Edit or Delete</a>
+                        <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
                     {% endfor %}
-                </ul></h3>
+                </h3></ul>
                 <br>
+
+                <form action='/delete_stores_confirm' method='post'>
+                  <button class="btn-danger" type="submit">Delete All Stores</button>
+                </form>
 
             {% else %}
                <p>There are no stores entered yet!</p>
             {% endif %}
            <br>
+           <a href="/"><button class="btn-success">Home</button></a>
        </div>
-
     </body>
 </html>

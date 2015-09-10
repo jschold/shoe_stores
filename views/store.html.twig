@@ -11,16 +11,15 @@
     </nav>
           <div class='container'>
           <div class="row">
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href="/stores" class="btn-success btn-lg" role="button">View all shoe stores and the brands they carry</a>
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href="/brands" class="btn-success btn-lg" role="button">View all shoe brands and the stores that carry them</a>
+                {% if brands is not empty %}
+                    <p>Here are {{ store.GetStoreName }}'s shoe brands:</p>
+                    <ul>
+                        {% for brand in brand %}
+                            <li>{{ brand.getBrandName }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <a class="btn-success btn-lg" href="/stores/{{ store.getId }}/edit" role="button">Edit or Delete Store</a>
         </div>
         </div>
   </body>

@@ -29,7 +29,6 @@
         function save()
         {
           $test = $this->getStoreName();
-          var_dump($test);
             $GLOBALS['DB']->exec("INSERT INTO stores (store_name) VALUES ('{$this->getStoreName()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }

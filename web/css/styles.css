@@ -1,0 +1,23 @@
+.navbar{
+    background-image: url(https://pbs.twimg.com/profile_images/494871376553988096/YOM8xAVf_400x400.jpeg);
+    background-size: 18%;
+    background-repeat: no-repeat;
+    background-position: right;
+    margin-right: 6px;
+    height: 200px;
+    background-color: black;
+}
+
+h1{
+  color:ffffff;
+}
+
+h2{
+  color:778899;
+}
+
+/*body {
+    background-image: url(http://www.denimblog.com/wp-content/uploads/2013/09/brogues-boat-shoes.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}*/

@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Shoe Experts</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+        <body>
+          <nav class="navbar navbar-inverse">
+            <h1>Shoe Experts</h1>
+            <h2>A place to search for shoes and the stores that carry them.</h3>
+          </nav>
+        <body>
+        <div class='container'>
+
+            <h3>Enter a brand's name:</h3>
+
+            <form action='/brands' method='post'>
+                <div class ='form-group'>
+                    <label for='brand_name'></label>
+                    <input id='brand_name' class='form-control' placeholder='Brand Name' name='brand_name' type='text'>
+                    <br>
+                    <button type='submit' class='btn btn-success'>Add Brand</button>
+                </div>
+            </form>
+
+            {% if brands is not empty %}
+                <h2><p>Click on a brand's name to see the stores that carry them:</p></h2>
+                <h3><ul>
+                    {% for brand in brands %}
+                    <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a>
+                    {% endfor %}
+                </ul></h3>
+                <br>
+
+                <form action='/delete_brands_confirm' method='post'>
+                  <button class="btn-danger" type="submit">Delete All Brands</button>
+                </form>
+
+            {% else %}
+               <p>There are no brands entered yet!</p>
+            {% endif %}
+           <br>
+           <a href="/"><button class="btn-success">Home</button></a>
+       </div>
+
+    </body>
+</html>
