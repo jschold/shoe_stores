@@ -6,13 +6,15 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse">
+      <br>
       <h1>Shoe Experts</h1>
+      <br>
       <h2>A place to search for shoes and the stores that carry them.</h3>
     </nav>
           <div class='container'>
           <div class="row">
                 {% if brands is not empty %}
-                    <p>Shoe brands carried by {{ store.GetStoreName }}:</p>
+                    <h3>Shoe brands carried by {{ store.GetStoreName }}:</h3>
                     <ul>
                         {% for brand in brands %}
                             <li>{{ brand.getBrandName }}</li>
@@ -20,19 +22,29 @@
                     </ul>
                 {% endif %}
 
-          <h3>Add a brand to {{ store.GetStoreName }}:</h3>
+          <h3>Choose a shoe brand to add to {{ store.GetStoreName }}</h3>
 
-           <p>Enter a shoe brand to {{ store.getStoreName }}:</p>
-            <form action='/add_brands' method='post'>
-                <input id='store_id' class='form-control' name="store_id" type="hidden" value="{{ store.getId()}}">
-                <div class ='form-group'>
-                    <label for='brand_name'></label>
-                    <input id='brand_name' class='form-control' placeholder='Brand Name' name='brand_name' type='text'>
-                    <br>
-                    <button type='submit' class='btn btn-danger'>Add Brand</button>
-                </div>
-            </form>
-                <a class="btn-success btn-lg" href="/stores/{{ store.getId }}/edit" role="button">Edit or Delete Store</a>
+           <form action='/add_brands' method='post'>
+           <input id='store_id' name='store_id' type='hidden' value='{{ store.getId() }}'>
+
+           <label for ='brand_id'>Select a Brand (if there are no choices, visit the brands page to add brands):</label><br/>
+           <div class="input-group">
+               <select id='brand_id' name='brand_id' type='text' class="form-control">
+               {% for brand in all_brands %}
+                   <option value="{{ brand.getId }}"> {{ brand.getBrandName }}</option>
+               {% endfor %}
+               </select>
+               <span class="input-group-btn">
+                   <button type="submit" class="btn btn-warning">Add Brand</button>
+               </span>
+           </div>
+       </form>
+
+
+            <a class="btn-success btn-lg" href="/stores/{{ store.getId }}/edit" role="button">Edit or Delete Store</a>
+            <br>
+            <br>
+            <a href="/"><button class="btn-success btn-lg">Home</button></a>
         </div>
         </div>
   </body>

@@ -6,7 +6,9 @@
     </head>
         <body>
           <nav class="navbar navbar-inverse">
+            <br>
             <h1>Shoe Experts</h1>
+            <br>
             <h2>A place to search for shoes and the stores that carry them.</h3>
           </nav>
         <body>
@@ -19,12 +21,12 @@
                     <label for='store_name'></label>
                     <input id='store_name' class='form-control' placeholder='Store Name' name='store_name' type='text'>
                     <br>
-                    <button type='submit' class='btn btn-success'>Add Store</button>
+                    <button type='submit btn-lg' class='btn btn-success btn-lg'>Add Store</button>
                 </div>
             </form>
 
             {% if stores is not empty %}
-                <h2><p>Click on a store's name to see the brands they carry:</p></h2>
+                <h3><p>Click on a store's name to see the brands they carry:</p></h3>
                 <h3><ul>
                     {% for store in stores %}
                         <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
@@ -33,14 +35,14 @@
                 <br>
 
                 <form action='/delete_stores_confirm' method='post'>
-                  <button class="btn-danger" type="submit">Delete All Stores</button>
+                  <button class="btn-danger btn-lg" type="submit">Delete All Stores</button>
                 </form>
 
             {% else %}
                <p>There are no stores entered yet!</p>
             {% endif %}
            <br>
-           <a href="/"><button class="btn-success">Home</button></a>
+           <a href="/"><button class="btn-success btn-lg">Home</button></a>
        </div>
     </body>
 </html>

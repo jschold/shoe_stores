@@ -6,7 +6,9 @@
     </head>
         <body>
           <nav class="navbar navbar-inverse">
+            <br>
             <h1>Shoe Experts</h1>
+            <br>
             <h2>A place to search for shoes and the stores that carry them.</h3>
           </nav>
         <body>
@@ -19,12 +21,12 @@
                     <label for='brand_name'></label>
                     <input id='brand_name' class='form-control' placeholder='Brand Name' name='brand_name' type='text'>
                     <br>
-                    <button type='submit' class='btn btn-success'>Add Brand</button>
+                    <button type='submit btn-lg' class='btn btn-success btn-lg'>Add Brand</button>
                 </div>
             </form>
 
             {% if brands is not empty %}
-                <h2><p>Click on a brand's name to see the stores that carry them:</p></h2>
+                <h3><p>Click on a brand's name to see the stores that carry them:</p></h3>
                 <h3><ul>
                     {% for brand in brands %}
                     <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a>
@@ -33,14 +35,14 @@
                 <br>
 
                 <form action='/delete_brands_confirm' method='post'>
-                  <button class="btn-danger" type="submit">Delete All Brands</button>
+                  <button class="btn-danger btn-lg" type="submit">Delete All Brands</button>
                 </form>
 
             {% else %}
-               <p>There are no brands entered yet!</p>
+               <h3>There are no brands entered yet!</h3>
             {% endif %}
            <br>
-           <a href="/"><button class="btn-success">Home</button></a>
+           <a href="/"><button class="btn-success btn-lg">Home</button></a>
        </div>
 
     </body>

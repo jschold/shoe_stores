@@ -3,21 +3,51 @@
     background-size: 18%;
     background-repeat: no-repeat;
     background-position: right;
-    margin-right: 6px;
     height: 200px;
     background-color: black;
 }
 
 h1{
   color:ffffff;
+  font-family: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif;
+	font-size: 50px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
 }
 
 h2{
   color:778899;
+  font-family: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif;
+	font-size: 30px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
 }
 
-/*body {
-    background-image: url(http://www.denimblog.com/wp-content/uploads/2013/09/brogues-boat-shoes.png);
+h2{
+  color:778899;
+  font-family: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif;
+	font-size: 30px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+
+h3{
+  color:000000;
+  font-family: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif;
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+body {
+    /*background-image: url(http://www.denimblog.com/wp-content/uploads/2013/09/brogues-boat-shoes.png);*/
     background-size: cover;
     background-repeat: no-repeat;
-}*/
+}

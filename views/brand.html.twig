@@ -6,13 +6,15 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse">
+      <br>
       <h1>Shoe Experts</h1>
+      <br>
       <h2>A place to search for shoes and the stores that carry them.</h3>
     </nav>
           <div class='container'>
           <div class="row">
                 {% if stores is not empty %}
-                    <p>Shoe stores carried by {{ store.GetStoreName }}:</p>
+                    <h3>Stores that carry {{ brand.GetBrandName }}:</h3>
                     <ul>
                         {% for store in stores %}
                             <li>{{ store.getStoreName }}</li>
@@ -20,19 +22,23 @@
                     </ul>
                 {% endif %}
 
-          <h3>Add a store to {{ store.GetStoreName }}:</h3>
+           <h3>Choose a store that carries {{ brand.GetBrandName }}:</h3>
 
-           <p>Enter a shoe store to {{ store.getStoreName }}:</p>
-            <form action='/add_stores' method='post'>
-                <input id='store_id' class='form-control' name="store_id" type="hidden" value="{{ store.getId()}}">
-                <div class ='form-group'>
-                    <label for='store_name'></label>
-                    <input id='store_name' class='form-control' placeholder='Store Name' name='store_name' type='text'>
-                    <br>
-                    <button type='submit' class='btn btn-danger'>Add Store</button>
-                </div>
-            </form>
-                <a class="btn-success btn-lg" href="/stores/{{ store.getId }}/edit" role="button">Edit or Delete Store</a>
+           <form action='/add_stores' method='post'>
+               <label for="store_id">Select a Store (if there are no choices, visit the stores page to add stores):</label>
+               <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
+               <div class="input-group">
+               <select id='store_id' name='store_id' type='text'class="form-control">
+                   {% for store in all_stores %}
+                   <option value="{{ store.getId }}"> {{ store.getStoreName }} </option>
+                   {% endfor %}
+               </select>
+               <span class="input-group-btn">
+                   <button class="btn btn-warning" type='submit'>Add Store</button>
+               </span>
+           </div>
+           </form>
+           <a href="/"><button class="btn-success btn-lg">Home</button></a>
         </div>
         </div>
   </body>
