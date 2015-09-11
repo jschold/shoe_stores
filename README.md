@@ -6,7 +6,7 @@
 
 ## Description
 
-_This app allows users to create and add shoe brands that a store carries. Many shoe stores can carry many brands, and vice versa. A user can view a single store to see what brands it carries, and add a brand to that store. A user can view a single brand to see what stores carry it, and add a store to that brand. Stores can be created, viewed, updated, and deleted. Shoe brands can only be created and viewed._
+_This app allows users to add and view stores and the brands they carry (and vice versa). Users can update the store name and delete a single store. They can also delete all brands._
 
 ## Setup
 
