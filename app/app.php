@@ -98,7 +98,7 @@
         $store_name = $_POST['store_name'];
         $store = Store::find($id);
         $store->update($store_name);
-        return $app['twig']->render('edit_store.html.twig', array('store' => $store, 'brands' => $store->getBrands()));
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
 
     //Deletes one store
