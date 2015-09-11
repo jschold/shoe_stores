@@ -45,6 +45,12 @@
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
 
+    //Finds store that will be edited
+    $app->get("/stores/{id}/edit", function($id) use ($app) {
+        $store = Store::find($id);
+        return $app['twig']->render('edit_store.html.twig', array('store' => $store));
+    });
+
     //Posts new store to storepage
     $app->post("/stores", function() use ($app) {
         $store = new Store($_POST['store_name']);
@@ -93,12 +99,6 @@
         $store = Store::find($id);
         $store->update($store_name);
         return $app['twig']->render('edit_store.html.twig', array('store' => $store, 'brands' => $store->getBrands()));
-    });
-
-    //Edits store information
-    $app->get("/stores/{id}/edit", function($id) use ($app) {
-        $store = Store::find($id);
-        return $app['twig']->render('edit_store.html.twig', array('store' => $store));
     });
 
     //Deletes one store
